@@ -100,14 +100,14 @@ contract SimpleBank {
       // return the user's balance.
 
       // 1. Use a require expression to guard/ensure sender has enough funds
-      require(balances[msg.sender] >= msg.value);
+      require(balances[msg.sender] >= withdrawAmount);
 
       // 2. Transfer Eth to the sender and decrement the withdrawal amount from
       //    sender's balance
-      balances[msg.sender] -= msg.value;
+      balances[msg.sender] -= withdrawAmount;
       
 
       // 3. Emit the appropriate event for this message
-      emit LogWithdrawal(msg.sender, msg.value, balances[msg.sender]);
+      emit LogWithdrawal(msg.sender, withdrawAmount, balances[msg.sender]);
     }
 }
